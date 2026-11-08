@@ -96,11 +96,11 @@ theme_mode: dark
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: /assets/img/avatar.png
+avatar: /assets/img/hamster-white.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
-social_preview_image: /assets/img/avatar.png
+social_preview_image: /assets/img/hamster-white.png
 
 # boolean type, the global switch for TOC in posts.
 toc: true
