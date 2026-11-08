@@ -3,6 +3,8 @@
 # Import the theme
 theme: jekyll-theme-chirpy
 
+future: true
+
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # `ko-KR` is in the theme's `_data/locales` folder, so the UI (menu, labels) is Korean too.
 lang: ko-KR
