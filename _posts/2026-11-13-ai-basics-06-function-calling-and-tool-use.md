@@ -2,7 +2,7 @@
 title: "[AI 기초 06] 도구를 스스로 쓰는 AI: Function Calling과 Tool Use 작동 원리"
 date: 2026-11-13 08:00:00 +0900
 categories: [AI, 기초스터디]
-tags: [FunctionCalling, ToolUse, OpenAI, Claude, Agent, API, AI기초]
+tags: [FunctionCalling, ToolUse, StructuredOutput, OpenAI, Claude, Agent, API, AI기초]
 image:
   path: /assets/img/posts/tool-use-function-calling.png
   alt: AI 도구 호출 및 함수 연동 아키텍처
@@ -22,7 +22,7 @@ image:
 _LLM은 정형화된 JSON 주문서를 발행하고, 실제 실행은 하네스(시스템)가 처리한 뒤 결과를 다시 전달하는 루프_
 
 1. **메뉴판 제공 (도구 선언)**: 우리가 AI에게 *"너는 `get_weather(city)`라는 함수를 쓸 수 있어"*라고 스키마(메뉴판)를 전달합니다.
-2. **판단과 주문서 작성**: 사용자가 *"인천 지금 비 와?"*라고 물으면, AI는 자신이 날씨를 직접 모른다는 것을 알고 문장 대신 아래와 같은 정형화된 **JSON 호출 주문서**를 출력합니다:
+2. **판단과 주문서 작성**: 사용자가 *"인천 지금 비 와?"*라고 물으면, AI는 자신이 날씨를 직접 모른다는 것을 알고 문장 대신 아래와 같은 정형화된 **JSON 호출 주문서(구조화된 출력, Structured Output)**를 출력합니다:
    ```json
    {
      "name": "get_weather",
@@ -66,7 +66,7 @@ tool_definition = {
 print("도구 스키마 준비 완료: AI가 언제든 이 함수를 호출할 수 있습니다.")
 ```
 
-이처럼 엄격한 JSON Schema를 정의해 두면, LLM은 엉뚱한 문자열 대신 정확히 시스템이 처리할 수 있는 파라미터를 넘겨주게 됩니다.
+이처럼 엄격한 JSON Schema를 정의해 두면, LLM은 엉뚱한 문자열 대신 정확히 시스템이 처리할 수 있는 파라미터를 넘겨주게 됩니다. 이것이 바로 프로덕션 AI의 필수 기술인 **구조화된 출력(Structured Output / JSON Mode)**의 본질입니다.
 
 ---
 

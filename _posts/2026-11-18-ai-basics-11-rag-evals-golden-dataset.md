@@ -2,7 +2,7 @@
 title: "[AI 기초 11] RAG 정량 평가(Evals)의 모든 것: 골든 데이터셋과 채점 기준표 만들기"
 date: 2026-11-18 08:00:00 +0900
 categories: [AI, 기초스터디]
-tags: [Evals, RAG, Benchmarking, Accuracy, Hallucination, Architecture, AI기초]
+tags: [Evals, Ragas, Observability, RAG, Benchmarking, Accuracy, Hallucination, Architecture, AI기초]
 ---
 
 *"우리 RAG 시스템 성능이 아주 좋습니다!"*
@@ -33,6 +33,19 @@ RAG를 제대로 평가하려면 사람이 직접 정답을 적어둔 **기준 �
 | **검색 적중률 (Hit Rate)** | 검색 엔진이 정답이 담긴 문서를 상위 3위 안에 찾아왔는가? | 정답 문서 포함 횟수 / 전체 질문 수 |
 | **답변 정확도 (Answer Accuracy)** | LLM이 찾은 문서를 바탕으로 틀린 말 없이 올바른 결론을 냈는가? | 1점(정답) / 0.5점(부분일치) / 0점(오답) |
 | **환각률 (Hallucination Rate)** | 본문에 없는 내용을 마치 사실인 것처럼 지어낸 비율 | 환각 발생 건수 / 전체 질문 수 |
+
+---
+
+## 📐 글로벌 표준 RAG 평가 프레임워크: Ragas 4대 지표와 LLM 관측
+
+엔터프라이즈 실무에서는 자체 채점표 외에도 글로벌 오픈소스 표준 프레임워크인 **Ragas(Retrieval Augmented Generation Assessment)**를 연동하여 정밀 채점을 수행합니다.
+
+1. **충실도 (Faithfulness)**: 문맥에 없는 거짓말을 지어내지 않았는가? (환각 측정)
+2. **답변 관련성 (Answer Relevance)**: 사용자의 질문 의도에 딱 맞는 답을 내놓았는가?
+3. **문맥 정밀도 (Context Precision)**: 검색된 청크 중 진짜 정답이 맨 위에 랭크되었는가?
+4. **문맥 재현율 (Context Recall)**: 정답을 도출하는 데 필요한 모든 배경 정보를 누락 없이 긁어왔는가?
+
+아울러 평가 결과와 운영 중 발생하는 지연·오류는 **LangSmith, Arize Phoenix** 같은 **LLM 관측(Observability)** 도구로 타임라인 트레이싱을 연동하여 지속적으로 개선하는 것이 **LLMOps**의 기본 정석입니다.
 
 ---
 
