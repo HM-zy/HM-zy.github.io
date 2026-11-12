@@ -13,6 +13,12 @@ tags: [RAG, Hallucination, Guardrails, Fallback, PromptEngineering, Architecture
 
 ---
 
+## 🛡️ 가드레일 (Guardrails)이란?
+- **일상 비유**: 고속도로 양옆의 철제 안전 난간. 차가 빗길에 미끄러져도 절벽 아래로 떨어지지 않게 막아주는 **방어벽**.
+- **핵심 원리**: AI의 입출력을 감시하여 사내 기밀 유출, 욕설/비방, 규격 외 엉뚱한 답변, 프롬프트 인젝션 공격을 실시간 차단하고 안전한 Fallback 응답을 유도하는 안전 통제 프레임워크입니다.
+
+---
+
 ## 🛡️ 환각 방어의 3단계 안전벨트
 
 1. **1단계: 엄격한 프롬프트 가드레일 (Context-Only Rule)**

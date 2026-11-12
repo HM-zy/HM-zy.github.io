@@ -13,6 +13,12 @@ tags: [Reranking, Latency, RAG, Optimization, Architecture, AI기초]
 
 ---
 
+## 🎯 리랭킹 (Reranking)이란?
+- **일상 비유**: 1차 서류 전형에서 100명을 빠르게 거른 뒤, 상위 10명을 면접관이 1:1로 꼼꼼히 심층 면접해 진짜 1~3등을 다시 줄 세우는 것.
+- **핵심 원리**: 1차 벡터 검색으로 추려낸 수십 개 후보 문서를 Cross-Encoder 신경망으로 재평가해 질문과의 진짜 연관도 순으로 재정렬하는 2단계 정밀화 기법입니다.
+
+---
+
 ## ⚡ 2단계 검색 파이프라인 (Two-Stage Retrieval)
 
 1. **1단계: 고속 대량 추출 (Bi-Encoder / Dense Vector)**
