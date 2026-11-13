@@ -1,15 +1,20 @@
 ---
 ---
 
-@import "jekyll-theme-chirpy";
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
 
-/* Clean white wallpaper */
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* White page background */
 body {
   background-color: #ffffff;
   background-image: none;
   background-attachment: fixed;
-}
-
-#main-wrapper {
-  background: transparent;
 }
