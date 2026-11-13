@@ -1,7 +1,7 @@
 ---
 title: "[Architecture] 유휴 장비(인텔 맥)를 활용한 엔터프라이즈 하이브리드 AI 구축 가이드: 사내 격리 RAG(1안) vs FinOps AI 게이트웨이(2안)"
 date: 2026-11-13 19:30:00 +0900
-categories: [Project, FinOps AI Gateway, 아키텍처]
+categories: [Project, FinOps AI Gateway]
 tags: [HybridAI, OnPremise, SolutionArchitect, EnterpriseRAG, FinOps, LiteLLM, Chroma, Qdrant, Docker, Architecture, PoV, IntelMac, B2B, AI]
 ---
 
