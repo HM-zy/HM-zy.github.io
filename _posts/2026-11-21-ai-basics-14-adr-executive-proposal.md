@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 14] 실전 기술 검증(PoV) 보고서 작성법: 임원을 설득하는 아키텍처 의사결정 기록(ADR)"
 date: 2026-11-21 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [PoV, ADR, Proposal, Architecture, ExecutiveSummary, AI기초]
+categories: [기초·개념]
+tags: [PoV, ADR, Proposal, Architecture, ExecutiveSummary, AI기초, AI]
 ---
 
 *"코딩은 잘 끝났는데, 이걸 C-Level 임원들에게 어떻게 보고하고 예산을 따내야 할까요?"*

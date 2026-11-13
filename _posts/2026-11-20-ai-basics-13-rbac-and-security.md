@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 13] 엔터프라이즈 권한 격리와 보안: 멀티테넌시 RAG와 메타데이터 필터링"
 date: 2026-11-20 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [Security, RBAC, MultiTenancy, RAG, MetadataFiltering, Architecture, AI기초]
+categories: [기초·개념]
+tags: [Security, RBAC, MultiTenancy, RAG, MetadataFiltering, Architecture, AI기초, AI]
 ---
 
 *"신입사원이 챗봇에게 '우리 회사 임원 연봉 얼마야?'라고 물었더니, 이사회 회의록 문서를 읽고 답변해 버렸습니다."*

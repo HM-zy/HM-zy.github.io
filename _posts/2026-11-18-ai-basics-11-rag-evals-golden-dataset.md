@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 11] RAG 정량 평가(Evals)의 모든 것: 골든 데이터셋과 채점 기준표 만들기"
 date: 2026-11-18 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [Evals, Ragas, Observability, RAG, Benchmarking, Accuracy, Hallucination, Architecture, AI기초]
+categories: [기초·개념]
+tags: [Evals, Ragas, Observability, RAG, Benchmarking, Accuracy, Hallucination, Architecture, AI기초, AI]
 ---
 
 *"우리 RAG 시스템 성능이 아주 좋습니다!"*

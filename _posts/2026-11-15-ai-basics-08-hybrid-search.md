@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 08] 하이브리드 검색의 비밀: 키워드(BM25)와 벡터 임베딩을 결합하는 법"
 date: 2026-11-15 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [HybridSearch, BM25, VectorSearch, RAG, RRF, Architecture, AI기초]
+categories: [기초·개념]
+tags: [HybridSearch, BM25, VectorSearch, RAG, RRF, Architecture, AI기초, AI]
 ---
 
 현업에서 RAG 시스템을 만들고 가장 먼저 부딪히는 벽이 있습니다. 

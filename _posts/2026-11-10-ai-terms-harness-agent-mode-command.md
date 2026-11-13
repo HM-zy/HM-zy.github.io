@@ -1,8 +1,8 @@
 ---
 title: "[AI 핵심 사전] 하네스, 에이전트, 모드, MCP부터 AGI, AX, BM, GUI 에이전트, 리버스 엔지니어링, LLMOps까지: 실무 개념 완벽 정리"
 date: 2026-11-10 20:45:00 +0900
-categories: [AI, 실무개념]
-tags: [Agent, Harness, ClaudeCode, Codex, Mode, Command, MCP, ModelContextProtocol, AGI, AX, BareMetal, VirtualMachine, GUIAgent, CUA, ComputerUse, Operator, ReverseEngineering, Security, LLM, OpenAI, Anthropic, AI용어, LLMOps, Ragas, Observability, StructuredOutput]
+categories: [기초·개념]
+tags: [Agent, Harness, ClaudeCode, Codex, Mode, Command, MCP, ModelContextProtocol, AGI, AX, BareMetal, VirtualMachine, GUIAgent, CUA, ComputerUse, Operator, ReverseEngineering, Security, LLM, OpenAI, Anthropic, AI용어, LLMOps, Ragas, Observability, StructuredOutput, AI]
 image:
   path: /assets/img/posts/agent-harness-concept.png
   alt: AI 에이전트 하네스와 실행 구조 개념도

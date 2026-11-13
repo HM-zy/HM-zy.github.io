@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 09] RAG 환각(Hallucination) 방어: 가드레일과 Fallback 아키텍처"
 date: 2026-11-16 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [RAG, Hallucination, Guardrails, Fallback, PromptEngineering, Architecture, AI기초]
+categories: [기초·개념]
+tags: [RAG, Hallucination, Guardrails, Fallback, PromptEngineering, Architecture, AI기초, AI]
 ---
 
 *"모르면 모른다고 솔직하게 말해줬으면 좋겠는데, 왜 자꾸 그럴듯하게 거짓말을 지어낼까요?"*

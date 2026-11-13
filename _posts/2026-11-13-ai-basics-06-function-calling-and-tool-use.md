@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 06] 도구를 스스로 쓰는 AI: Function Calling과 Tool Use 작동 원리"
 date: 2026-11-13 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [FunctionCalling, ToolUse, StructuredOutput, OpenAI, Claude, Agent, API, AI기초]
+categories: [기초·개념]
+tags: [FunctionCalling, ToolUse, StructuredOutput, OpenAI, Claude, Agent, API, AI기초, AI]
 image:
   path: /assets/img/posts/tool-use-function-calling.png
   alt: AI 도구 호출 및 함수 연동 아키텍처

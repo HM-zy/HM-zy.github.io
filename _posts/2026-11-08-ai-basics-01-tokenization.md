@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 01] 토큰에서 다음 단어 예측까지: LLM은 내부에서 어떻게 작동하는가? (비유로 쉽게 이해하기)"
 date: 2026-11-08 19:55:00 +0900
-categories: [AI, 기초스터디]
-tags: [LLM, Token, Embedding, Attention, Transformer, Python, AI기초]
+categories: [기초·개념]
+tags: [LLM, Token, Embedding, Attention, Transformer, Python, AI기초, AI]
 image:
   path: /assets/img/posts/llm-pipeline-architecture.png
   alt: LLM 토큰 처리 및 다음 단어 예측 파이프라인 구조도

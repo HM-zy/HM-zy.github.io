@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 10] 100줄 코드로 사내 시연용 RAG 웹 데모 배포하기 (Streamlit 실무)"
 date: 2026-11-17 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [Streamlit, RAG, WebUI, PoV, Prototyping, Architecture, AI기초]
+categories: [기초·개념]
+tags: [Streamlit, RAG, WebUI, PoV, Prototyping, Architecture, AI기초, AI]
 ---
 
 Solution Architect(SA)가 고객사 기술 검증(PoV) 미팅에 들어갈 때, 터미널 검은 화면에서 코드를 돌려 보여주면 C-Level 임원들의 마음을 사로잡기 어렵습니다.
