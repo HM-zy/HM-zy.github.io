@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 04] 임베딩(Embedding)과 벡터 DB: AI가 텍스트의 '의미'를 지도로 그리는 방법"
 date: 2026-11-11 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [Embedding, VectorDB, SemanticSearch, RAG, CosineSimilarity, AI기초]
+categories: [기초·개념]
+tags: [Embedding, VectorDB, SemanticSearch, RAG, CosineSimilarity, AI기초, AI]
 image:
   path: /assets/img/posts/vector-embedding-space.png
   alt: 고차원 벡터 임베딩 공간 개념도

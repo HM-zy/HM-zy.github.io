@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 07] 실패하지 않는 AI 에이전트 설계: 상태 머신과 LangGraph 아키텍처"
 date: 2026-11-14 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [Agent, LangGraph, StateMachine, Architecture, HumanInTheLoop, AI기초]
+categories: [기초·개념]
+tags: [Agent, LangGraph, StateMachine, Architecture, HumanInTheLoop, AI기초, AI]
 image:
   path: /assets/img/posts/agent-state-machine.png
   alt: AI 에이전트 상태 머신 워크플로 그래프

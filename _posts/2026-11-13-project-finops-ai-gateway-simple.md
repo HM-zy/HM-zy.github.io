@@ -1,7 +1,7 @@
 ---
 title: "[Project] 엔터프라이즈 AI 비용 관리 게이트웨이 PoV: 유휴 인텔 맥북으로 설계하기"
 date: 2026-11-13 22:00:00 +0900
-categories: [Project]
+categories: [Project, FinOps AI Gateway]
 tags: [AI, FinOps, SolutionArchitect, API, Gateway, PoV, IntelMac, Architecture, LiteLLM]
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 03] Temperature와 Top-P: AI의 성향을 조절하는 모범생 vs 예술가 다이얼"
 date: 2026-11-10 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [Temperature, TopP, Hyperparameter, LLM, OpenAI, Claude, AI기초]
+categories: [기초·개념]
+tags: [Temperature, TopP, Hyperparameter, LLM, OpenAI, Claude, AI기초, AI]
 image:
   path: /assets/img/posts/temperature-top-p-concept.png
   alt: AI 온도와 확률 조절 다이얼 개념도

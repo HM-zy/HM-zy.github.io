@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 02] System, User, Assistant 역할 분리: 프롬프트 엔지니어링의 기본 뼈대 잡기"
 date: 2026-11-09 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [Prompt, SystemPrompt, OpenAI, Claude, API, AI기초]
+categories: [기초·개념]
+tags: [Prompt, SystemPrompt, OpenAI, Claude, API, AI기초, AI]
 image:
   path: /assets/img/posts/prompt-roles-concept.png
   alt: AI 프롬프트 역할 분리 개념도

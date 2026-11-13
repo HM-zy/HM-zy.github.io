@@ -1,8 +1,8 @@
 ---
 title: AI 에이전트 하네스(Harness)란 무엇인가? 쉽게 이해하기
 date: 2026-11-08 19:10:00 +0900
-categories: [AI]
-tags: [Harness, Agent, LLM, Architecture]
+categories: [기초·개념]
+tags: [Harness, Agent, LLM, Architecture, AI]
 image:
   path: /assets/img/posts/agent-harness-concept.png
   alt: AI 에이전트 하네스 개념도

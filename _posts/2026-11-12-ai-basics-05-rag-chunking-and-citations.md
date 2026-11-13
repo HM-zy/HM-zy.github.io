@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 05] 엔터프라이즈 RAG의 핵심: 사내 문서를 쪼개고 출처(Citation)를 남기는 법"
 date: 2026-11-12 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [RAG, Chunking, Citation, VectorDB, EnterpriseAI, Architecture, AI기초]
+categories: [기초·개념]
+tags: [RAG, Chunking, Citation, VectorDB, EnterpriseAI, Architecture, AI기초, AI]
 image:
   path: /assets/img/posts/rag-architecture-concept.png
   alt: 엔터프라이즈 RAG 검색 증강 생성 파이프라인

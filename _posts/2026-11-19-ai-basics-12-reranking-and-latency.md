@@ -1,8 +1,8 @@
 ---
 title: "[AI 기초 12] 대규모 RAG 속도 개선: 리랭킹(Reranking)과 지연시간(Latency) 트러블슈팅"
 date: 2026-11-19 08:00:00 +0900
-categories: [AI, 기초스터디]
-tags: [Reranking, Latency, RAG, Optimization, Architecture, AI기초]
+categories: [기초·개념]
+tags: [Reranking, Latency, RAG, Optimization, Architecture, AI기초, AI]
 ---
 
 *"검색 정확도를 높이려고 문서를 20개씩 LLM에 넘겼더니, 답변이 나오는 데 8초가 넘게 걸립니다."*
