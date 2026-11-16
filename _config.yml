@@ -3,7 +3,8 @@
 # Import the theme
 theme: jekyll-theme-chirpy
 
-future: true
+# 예약 발행: 포스트 날짜가 지나야 사이트에 노출 (하루씩 공개)
+future: false
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # `ko-KR` is in the theme's `_data/locales` folder, so the UI (menu, labels) is Korean too.
