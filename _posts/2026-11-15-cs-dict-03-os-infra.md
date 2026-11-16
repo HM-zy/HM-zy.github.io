@@ -12,7 +12,7 @@ AI 워크로드를 설계하다 보면 결국 **자원 이야기**로 돌아옵�
 
 첫 질문은 프로세스·스레드·VRAM의 이해를, 두 번째는 **OOMKilled**라는 아주 구체적인 지식과 배포 구조의 이해를 요구합니다. SA 면접에서 인프라 질문은 "용어를 아는가"가 아니라 **"용량을 계산하고 장애를 설명할 수 있는가"** 로 나옵니다.
 
-이 글의 9개 묶음입니다.
+이 글의 10개 묶음입니다.
 
 1. **프로세스 vs 스레드 · 서비스(Daemon) · 동시성 vs 병렬성** — 일을 나누는 단위와 뒤에서 기다리는 프로세스
 2. **컨텍스트 스위칭** — 동시성의 숨은 비용
@@ -23,6 +23,7 @@ AI 워크로드를 설계하다 보면 결국 **자원 이야기**로 돌아옵�
 7. **서버리스 vs 상시 구동 · Cold Start** — 비용과 지연의 맞교환
 8. **리전(Region) vs 존(Zone)** — 고가용성과 재해 복구의 물리 단위
 9. **IaC(Terraform) & CI/CD** — 손으로 만든 인프라는 재현되지 않는다
+10. **npm & package.json (`npm install` · `npm run` · `npx`)** — 인프라를 고정해도 의존성이 흔들리면 빌드는 재현되지 않는다
 
 ---
 
@@ -442,6 +443,43 @@ dev/stg/prod 상태를 한 파일에 섞으면 사고 시 복구가 불가능합
 
 **3) drift를 감시하세요.**
 콘솔에서 급하게 고친 리소스는 코드에 없습니다. 정기적으로 `terraform plan`을 돌려 **"코드에 없는 변경"** 을 감지하면, 장애 때 "누가 왜 바꿨는지"를 찾는 시간이 줄어듭니다.
+
+---
+
+## 📦 10. npm & package.json (`npm install` · `npm run` · `npx`): 인프라를 고정해도 의존성이 흔들리면 빌드는 재현되지 않는다
+
+**일상 비유**: npm은 **부품 주문 창구 겸 대여 창고**입니다. `package.json`은 "이번 공사에 필요한 부품 목록"이고, `package-lock.json`은 **규격·제조사·로트 번호까지 적은 확정 발주서**입니다. `node_modules`는 실제로 배달돼 **작업장에 쌓인 부품 상자**입니다. `npx`는 창고에서 **한 번만 꺼내 쓰고 반납하는 드릴**이라 내 작업장에 남지 않습니다.
+
+**핵심 원리**: npm은 Node.js(자바스크립트 런타임)의 **패키지 레지스트리 + CLI**입니다. `npm install`은 `package.json`이 요청한 패키지와 **그 패키지들이 다시 필요로 하는 패키지(전이 의존성, transitive dependency)** 를 레지스트리에서 받아 `node_modules`에 풀고, 실제로 푼 정확한 버전과 무결성 해시를 `package-lock.json`에 남깁니다. 즉 **"무엇을 원하는가(package.json)"와 "무엇으로 설치됐는가(lockfile)"를 분리**해 두는 구조입니다.
+
+| 파일 / 명령 | 역할 |
+| --- | --- |
+| `package.json` | 직접 쓰는 의존성 선언(`dependencies` = 실행, `devDependencies` = 빌드·테스트)과 스크립트 |
+| `package-lock.json` | 의존성 트리 전체의 정확한 버전 + `sha512` 무결성 해시 → 다른 기계·다른 날에도 같은 조합 |
+| `node_modules` | 실제 설치 결과물. 크고 환경마다 달라지므로 **커밋하지 않고 lockfile을 커밋**한다 |
+| `npm install` | lockfile을 참고하되 `package.json` 범위 안에서 **갱신될 수 있다** |
+| `npm ci` | lockfile만 보고 `node_modules`를 지운 뒤 새로 설치. `package.json`과 어긋나면 **실패** → CI 전용 |
+| `npm run <script>` | `scripts`에 정의한 명령 실행 (`npm run build`, `npm test`) |
+| `npx <pkg>` | 설치 없이 패키지 실행 파일을 임시로 받아 실행 (`npx -y @modelcontextprotocol/server-filesystem`) |
+
+**버전 범위(semver)의 함정**: `^1.4.2`는 1.x 안의 최신(>=1.4.2 <2.0.0), `~1.4.2`는 1.4.x 안의 최신, `1.4.2`는 정확히 그 버전입니다. `^`만 있으면 **오늘과 내일의 설치 결과가 달라질 수 있고**, 그 차이를 막는 장치가 lockfile입니다. (0.x는 `^0.3.1` → >=0.3.1 <0.4.0 으로 동작이 다릅니다.)
+
+**공급망 리스크**: npm 생태계는 설치 시 `postinstall` 스크립트가 실행될 수 있어, 이름이 비슷한 가짜 패키지(typosquatting)나 탈취된 계정으로 악성 코드가 배포되는 사고가 반복됩니다. 그래서 `npm audit`, lockfile 리뷰, 사내 프록시 레지스트리, 버전 고정이 방어선입니다. (`pnpm`·`yarn`도 같은 역할이고 명령만 다릅니다.)
+
+### 🎤 면접 30초 답변
+
+> "npm은 Node.js의 패키지 매니저로, package.json에 직접 의존성을 선언하고 npm install이 그 의존성과 전이 의존성까지 실제 버전으로 풀어 node_modules에 설치합니다. 이때 package-lock.json에 정확한 버전과 무결성 해시가 기록되기 때문에, CI에서는 npm install 대신 npm ci로 lockfile 그대로를 설치해 빌드 재현성을 확보합니다. npm run은 package.json의 스크립트를 실행하는 표준 진입점이고, npx는 전역 설치 없이 CLI를 한 번 실행할 때 씁니다. 실무에서는 여기에 공급망 보안이 붙습니다 — typosquatting이나 postinstall 악성 스크립트가 실제 사고 원인이라, 사내 프록시 레지스트리와 audit, lockfile 리뷰를 파이프라인에 넣습니다."
+
+### 🎯 SA 실무 포인트
+
+**1) 고객 CI에 `npm ci`를 넣고 lockfile 커밋을 규칙으로 만드세요.**
+`npm install`은 CI에서 조용히 의존성을 바꿔 "내 PC에선 되는데"를 만듭니다. lockfile 커밋 + `npm ci` + `npm audit --omit=dev`가 최소선입니다.
+
+**2) MCP 서버는 대개 `npx` 한 줄로 배포됩니다 — 그래서 공급망 검증이 SA의 일이 됩니다.**
+`npx -y @scope/server-...`는 출처와 버전, 실행 권한을 확인하지 않고 돌리는 것과 같습니다. PoV에서 "사내 레지스트리에 미러링하고 버전을 고정하면 이렇게 바뀐다"를 보여주는 것이 실제 차별점입니다.
+
+**3) 망분리(에어갭) 고객에게는 프록시 레지스트리가 요구사항입니다.**
+Artifactory·Nexus 같은 미러, scoped package(`@company/...`), 라이선스 스캔을 함께 제안하면 "인터넷이 막혀도 빌드된다"는 답이 됩니다.
 
 ---
 
