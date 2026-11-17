@@ -171,6 +171,8 @@ export ANTHROPIC_API_KEY=sk-ant-...   # 이 터미널 세션에서만 유효
 
 ## 내일 맥북에서 바로 띄우는 3단계 치트시트
 
+> 아래 예시는 제가 만들던 Sales Navigator 데모 저장소 기준입니다. 이 저장소는 아직 **비공개(private)** 라서 제 계정으로 로그인한 상태에서만 열리니, 다른 분은 본인 저장소 이름으로 바꿔 읽어 주세요.
+
 ```bash
 # 0. 창고에서 작업실로 (맥북에 폴더가 없을 때, 최초 1회)
 git clone https://github.com/HM-zy/redhat-solution-sales-navigator.git
