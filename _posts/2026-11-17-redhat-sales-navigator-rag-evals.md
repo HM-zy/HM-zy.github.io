@@ -65,6 +65,17 @@ tags: [RAG, Evals, Claude, Anthropic, RedHat, SolutionArchitect, BM25, Guardrail
 1. **근거는 맨 아래 지식 베이스에만 있다.** 모델은 자기 기억으로 말하지 않고, 검색된 발췌문 안에서만 문장을 만듭니다.
 2. **채점기는 파이프라인 밖에 따로 있다.** 서비스가 자기 답을 스스로 칭찬하지 않고, 별도 스크립트가 30문항을 돌려 숫자를 뽑습니다.
 
+### 실제 구현 기준 전체 구조 (Excalidraw)
+
+위 텍스트 그림은 이 글을 쓸 때의 **설계안**입니다. 아래 그림은 그 설계를 실제로 구현하고 Claude API로 측정한 뒤의 구조입니다. 청크 수, 가드레일 개수, 지표가 위 설계와 다른 부분은 아래 그림이 실제 값입니다. 구현과 측정 과정은 [실제 구현기](/posts/redhat-sales-navigator-rag-evals-build-log/)에 정리했습니다.
+
+![Sales Navigator 전체 구조 (RAG + Evals)](/assets/img/posts/sales-navigator-architecture-excalidraw.svg)
+_① 코퍼스 만들기 → ② 질문 하나에 답하기 → ③ 시험지로 측정하고 고치기 (Excalidraw로 작성, [원본 .excalidraw 파일](/assets/img/posts/sales-navigator-architecture.excalidraw))_
+
+- **① 오프라인:** 공식 문서 14개를 받아 본문만 남기고, 160단어 단위로 잘라 289개 청크의 BM25 인덱스를 만듭니다. 원문은 저장소에 올리지 않고 필요할 때 다시 받습니다.
+- **② 온라인:** 한국어 질문을 영어 제품 용어로 넓혀 검색하고, 모델을 부르기 전과 후에 가드레일을 3개씩 둡니다. 가격 질문이나 근거가 부족한 질문은 Claude를 호출하기 전에 거절합니다.
+- **③ Evals:** 30문항을 같은 파이프라인에 그대로 넣고 지표를 냅니다. 결과 파일(v0 → v1 → v2)을 보고 원인을 찾아 고친 뒤 다시 측정합니다. 단위 테스트 32개는 API 없이 가드레일과 인용 파싱만 따로 검증합니다.
+
 ---
 
 ## 2. 지식 베이스: "근거"를 파일로 고정한다
