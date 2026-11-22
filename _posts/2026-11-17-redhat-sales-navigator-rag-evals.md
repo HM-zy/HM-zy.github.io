@@ -48,7 +48,7 @@ tags: [RAG, Evals, Claude, Anthropic, RedHat, SolutionArchitect, BM25, Guardrail
   └ RAG 어시스턴트 카드  질문 입력 · 인용 · 거절 사유
       │  POST /api/ask
       ▼
-[Python RAG 서비스]   표준 라이브러리만 사용, 외부 검색 서비스 없음
+[Python RAG 서비스]   HTTP 서버·검색·청킹은 표준 라이브러리, 외부 검색 서비스 없음 (생성 호출만 anthropic SDK)
   ① 사전 가드레일   가격 / 범위 밖 / 근거 부족 → 모델 호출 없이 거절
   ② BM25 검색 top-8
      한글 2-gram · 별칭 16묶음 · 제품 1.5배 · RHEL 메이저 버전 1.35배
