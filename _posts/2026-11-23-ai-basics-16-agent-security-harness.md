@@ -120,7 +120,7 @@ for sql in tests:
     print(("✅ 허용" if ok else "⛔ 차단"), "|", sql[:52])
     print("   →", result if not ok else f"실행 쿼리: {result}\n")
 
-# ⑤ 출력 마스킹: 조회 결과가 그대로 챗봇에 나가면 안 되는 경우
+# ④ 출력 마스킹: 조회 결과가 그대로 챗봇에 나가면 안 되는 경우
 row = "김하늘 / haneul.kim@corp.com / 010-1234-5678 / 900101-1234567"
 print("원본:", row)
 print("마스킹:", mask_pii(row))
