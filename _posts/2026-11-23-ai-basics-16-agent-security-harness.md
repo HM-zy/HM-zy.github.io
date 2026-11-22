@@ -3,11 +3,17 @@ title: "[AI 기초 16] 에이전트 보안 하네스: Read-only DB 격리, 도�
 date: 2026-11-23 08:00:00 +0900
 categories: [기초·개념]
 tags: [Security, Harness, Whitelist, ReadOnly, PII, SQLGuardrail, Agent, Architecture, AI기초, AI]
+image:
+  path: /assets/img/posts/2026-11-23-agent-security-harness.png
+  alt: 유리 울타리 안에서 노트북을 쓰는 AI 로봇, 허용 도구 3개, 잠긴 DB와 가림 처리된 신분증을 표현한 3D 일러스트
 ---
 
 *"데모 시연 중이었습니다. 에이전트가 '테스트 삼아 정리해 보겠습니다'라며 DELETE를 날렸고, 시연용 DB라서 망정이었죠."*
 
 프롬프트에 *"절대 삭제하지 마"*라고 적어두는 것은 안전장치가 아닙니다. 그건 **부탁**입니다. AI가 실수해도 사고가 나지 않게 만드는 것은 모델 바깥의 코드와 인프라, 즉 **보안 하네스(Security Harness)**입니다.
+
+![유리 울타리 안에서 노트북을 쓰는 AI 로봇, 허용 도구 3개, 잠긴 DB와 가림 처리된 신분증을 표현한 3D 일러스트](/assets/img/posts/2026-11-23-agent-security-harness.png)
+_울타리 안의 로봇에게는 정해진 도구 3개만, 밖의 DB는 잠긴 통로로 읽기만, 나가는 신분증은 가려서 — 네 겹의 방어가 한 그림에 들어 있습니다_
 
 ---
 
@@ -119,6 +125,24 @@ row = "김하늘 / haneul.kim@corp.com / 010-1234-5678 / 900101-1234567"
 print("원본:", row)
 print("마스킹:", mask_pii(row))
 ```
+
+**실행 결과 (위 코드를 실제로 돌린 출력)**
+
+```text
+✅ 허용 | SELECT region, SUM(amount) FROM sales_v WHERE period
+   → 실행 쿼리: SELECT region, SUM(amount) FROM sales_v WHERE period = '2026-10' GROUP BY region LIMIT 100
+
+⛔ 차단 | DELETE FROM sales_v
+   → SELECT로 시작해야 함
+⛔ 차단 | SELECT * FROM sales_v; DROP TABLE users
+   → 다중 문장(;) 차단
+⛔ 차단 | SELECT * FROM employees WHERE name = '김*' -- 필요한 것만
+   → 허용되지 않은 테이블: ['employees']
+원본: 김하늘 / haneul.kim@corp.com / 010-1234-5678 / 900101-1234567
+마스킹: 김하늘 / [EMAIL] / [PHONE] / [RRN]
+```
+
+읽을 점이 두 가지 있습니다. 첫째, 정상 쿼리에는 `LIMIT 100`이 **자동으로 붙어** 나옵니다(전체 100만 건을 앱으로 끌고 오는 사고를 막습니다). 둘째, 마스킹 결과에서 이름 `김하늘`은 그대로 남았습니다 — 이름은 업무에 필요할 수 있어 남기고 연락처·주민번호만 가린 것입니다. **무엇을 가릴지도 업무 목적에서 정해지는 설계 결정**이라, 이 규칙은 고객사와 함께 확정해야 하는 항목입니다.
 
 **여기서 느껴야 하는 것**: 세 번째 테스트처럼 공격자는 **정상 SELECT 뒤에 세미콜론을 붙여** 두 번째 문장을 끼워 넣습니다. 첫 줄만 보고 판단하는 필터는 여기서 뚫립니다. 그래서 "말로 부탁"이 아니라 **문장 단위 검사**가 필요합니다.
 
