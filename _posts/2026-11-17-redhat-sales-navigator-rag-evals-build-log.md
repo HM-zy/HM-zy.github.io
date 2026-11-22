@@ -3,6 +3,7 @@ title: "[Project] Sales Navigator RAG 실제 구현기: 63.6%에서 시작해 ev
 date: 2026-11-17 18:00:00 +0900
 categories: [Project, Red Hat Sales Navigator]
 tags: [RAG, Evals, Claude, Anthropic, RedHat, BM25, Guardrails, Citation, GoldenDataset, SolutionArchitect, AI]
+description: "Red Hat 공식 문서 14건 기반 RAG 어시스턴트와 30/32문항 골든셋 Evals를 직접 구현하고, 과잉 거절 27.3%→9.1%·출처 무결성 75%→95%로 개선한 과정"
 ---
 
 > 🔗 코드·결과 파일 전체: [HM-zy/redhat-solution-sales-navigator](https://github.com/HM-zy/redhat-solution-sales-navigator) — 이 글의 숫자는 저장소의 결과 파일(`evals/results/`)과 저장된 raw 답변 재채점으로 그대로 재현할 수 있습니다.
