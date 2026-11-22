@@ -5,13 +5,7 @@ categories: [Project, Red Hat Sales Navigator]
 tags: [RAG, Evals, Claude, Anthropic, RedHat, BM25, Guardrails, Citation, GoldenDataset, SolutionArchitect, AI]
 ---
 
-> 🔗 코드·결과 파일 전체: [HM-zy/redhat-solution-sales-navigator](https://github.com/HM-zy/redhat-solution-sales-navigator)
-
-## 먼저 바로잡을 것
-
-오늘 오후에 올린 [Sales Navigator 글](/posts/redhat-sales-navigator-rag-evals/)은 **설계안**이었습니다. 그 글에 적힌 구현(57청크 지식 베이스, 8개 가드레일, Top-1 96.0%)은 당시 실제 코드로 존재하지 않았고, 저장소에는 React 프런트엔드 PoC만 있었습니다. 그 설계 글은 2026-11-22에 실제 구현·측정값으로 본문을 고쳤으니, 지금 그 글에 적힌 수치는 이 글과 같은 실측값입니다.
-
-이 글은 그 설계를 **오늘 실제로 구현하고, 실제 Claude API로 측정한 기록**입니다. 설계안에 적었던 96.0%보다 낮은 곳도 있습니다. 이 글의 숫자는 저장소의 결과 파일과 저장된 raw 답변 재채점으로 재현할 수 있습니다.
+> 🔗 코드·결과 파일 전체: [HM-zy/redhat-solution-sales-navigator](https://github.com/HM-zy/redhat-solution-sales-navigator) — 이 글의 숫자는 저장소의 결과 파일(`evals/results/`)과 저장된 raw 답변 재채점으로 그대로 재현할 수 있습니다.
 
 > 구현은 Claude Code와 페어 프로그래밍으로 진행했습니다. 설계 결정, 실패 원인 분석, 수치 해석은 아래에 모두 적었습니다.
 {: .prompt-info }

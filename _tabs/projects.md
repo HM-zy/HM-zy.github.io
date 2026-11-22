@@ -14,8 +14,7 @@ order: 2
 Red Hat B2B 영업 현장의 질문("RHEL 8 지원 종료는 언제인가요?", "Satellite로 폐쇄망 패치는 어떻게 하나요?")에 **Red Hat 공식 문서 안에서만** 근거를 찾아 문장마다 출처 `[doc_id]`를 붙여 답하고, 근거가 없으면 답하지 않는 영업용 AI 어시스턴트입니다. 답이 실제로 맞는지는 정답을 적어 둔 골든셋으로 자동 채점합니다.
 
 - 🔗 **GitHub 저장소**: [HM-zy/redhat-solution-sales-navigator](https://github.com/HM-zy/redhat-solution-sales-navigator)
-- 📄 **설계·측정 글**: [공식 문서 RAG 인용 + 30문항 Evals로 영업용 AI 어시스턴트 만들기](/posts/redhat-sales-navigator-rag-evals/)
-- 🧪 **구현기**: [63.6%에서 시작해 eval로 버그를 잡기까지](/posts/redhat-sales-navigator-rag-evals-build-log/)
+- 🧪 **구현기·측정 글**: [63.6%에서 시작해 eval로 버그를 잡기까지](/posts/redhat-sales-navigator-rag-evals-build-log/)
 
 ### 무엇을 만들었나
 
