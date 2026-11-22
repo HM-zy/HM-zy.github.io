@@ -9,6 +9,8 @@ tags: [RAG, Evals, Claude, Anthropic, RedHat, SolutionArchitect, BM25, Guardrail
 > **2026-11-22 정정.** 이 글은 2026-11-17 14:30에 **설계안**으로 올렸습니다. 그때 본문에 적힌 수치(57청크, 8종 가드레일, Top-1 96.0%, 단위 테스트 64개, `POST /api/advise`)는 설계 가안이었고, 실제 코드로 측정한 값이 아니었습니다. 같은 날 18:07에 구현과 라이브 Claude(`claude-opus-5-5`) 측정이 끝났고, 지금 본문은 **실제 구현과 결과 파일(`evals/results/`)에 있는 값으로 고친 상태**입니다. 구현과 개선 과정 전체는 [구현기](/posts/redhat-sales-navigator-rag-evals-build-log/)에 있습니다.
 {: .prompt-warning }
 
+> 🔗 코드와 결과 파일은 공개 저장소 [HM-zy/redhat-solution-sales-navigator](https://github.com/HM-zy/redhat-solution-sales-navigator)에 있습니다.
+
 ## 이 프로젝트를 한 문장으로
 
 고객이 "RHEL 8 ELS는 언제까지 쓰고, 그다음엔 어떻게 되죠?"라고 물을 때, **Red Hat 공식 문서에서 근거 문단을 찾아 원문 URL과 함께 답하고, 근거가 없으면 답하지 않는 영업용 AI 어시스턴트**를 만들었습니다. 그리고 그 답이 실제로 맞는지를 **정답을 적어 둔 시험지로 자동 채점**하는 구조까지 붙였습니다.
@@ -177,7 +179,7 @@ BM25의 약점은 여기서 드러납니다. 영업 사원은 "지원 종료 언
 
 "관련 문서가 없으면 답하지 않는다"는 규칙에는 기준선이 필요합니다. 코드에는 `EVIDENCE_THRESHOLD = 8.0`으로 두었습니다. 이 값이 어디쯤인지는 결과 파일로 확인할 수 있습니다.
 
-- 답한 20문항(v2 live)의 **최저 최고 점수: 9.74**
+- 답한 20문항(v2 live)의 **최저 점수 9.74 (최고 32.56)**
 - 근거 부족으로 거절된 "A고객사 구독 계약 만료일" 질문: **4.34**
 - 가격 질문 3건: 7.14 / 11.84 / 12.41 (가격 가드레일이 먼저 잡음)
 
@@ -466,11 +468,12 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 ### 라이브 Claude 평가 (키 필요)
 
-1. `pip install anthropic` — Anthropic SDK 설치 (라이브 모드에서만 필요)
-2. `export ANTHROPIC_API_KEY=sk-ant-...` — 키 설정 (`CLAUDE_MODEL`로 모델 ID 변경 가능)
-3. `python3 -m evals.run_eval --live` — 같은 골든셋을 실제 Claude로 평가
-4. `python3 -m rag.pipeline "RHEL 8 지원 종료는 언제인가요?"` — 단건 확인
-5. `npm install && npm run dev` 후 **RAG 어시스턴트** 카드에서 배지가 `준비 완료 · N청크`로 바뀌는지 확인
+`anthropic` SDK는 위 1단계의 `pip install -r requirements.txt`에서 이미 설치됩니다. 추가 설치는 필요 없습니다.
+
+1. `export ANTHROPIC_API_KEY=sk-ant-...` — 키 설정
+2. `python3 -m evals.run_eval --live` — 같은 골든셋을 실제 Claude로 평가 (모델 변경은 `--model` 플래그, 예: `--model claude-opus-5-5`)
+3. `python3 -m rag.pipeline "RHEL 8 지원 종료는 언제인가요?"` — 단건 확인
+4. `npm install && npm run dev` 후 **RAG 어시스턴트** 카드에서 배지가 `준비 완료 · N청크`로 바뀌는지 확인
 
 새로 실행한 결과는 `evals/results/<mode>-<시각>.json`으로 저장됩니다. `v0`~`v3` 파일은 버전별로 이름 붙여 보관한 것입니다.
 

@@ -5,6 +5,8 @@ categories: [Project, Red Hat Sales Navigator]
 tags: [RAG, Evals, Claude, Anthropic, RedHat, BM25, Guardrails, Citation, GoldenDataset, SolutionArchitect, AI]
 ---
 
+> 🔗 코드·결과 파일 전체: [HM-zy/redhat-solution-sales-navigator](https://github.com/HM-zy/redhat-solution-sales-navigator)
+
 ## 먼저 바로잡을 것
 
 오늘 오후에 올린 [Sales Navigator 글](/posts/redhat-sales-navigator-rag-evals/)은 **설계안**이었습니다. 그 글에 적힌 구현(57청크 지식 베이스, 8개 가드레일, Top-1 96.0%)은 당시 실제 코드로 존재하지 않았고, 저장소에는 React 프런트엔드 PoC만 있었습니다. 그 설계 글은 2026-11-22에 실제 구현·측정값으로 본문을 고쳤으니, 지금 그 글에 적힌 수치는 이 글과 같은 실측값입니다.
@@ -244,6 +246,8 @@ RHEL 9부터 ELCP로 통합했습니다. [rhel-lifecycle] ELCP는 EUS를 대체�
 - React 프런트엔드의 추천 카드에 이 RAG의 답변과 출처 연결
 
 ### 저장소 구성
+
+전체 코드는 [HM-zy/redhat-solution-sales-navigator](https://github.com/HM-zy/redhat-solution-sales-navigator)에서 볼 수 있습니다.
 
 ```text
 rag/sources.json      공식 문서 목록
