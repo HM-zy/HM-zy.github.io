@@ -1,6 +1,7 @@
 ---
 title: "[Project] Red Hat Solution Sales Navigator: 공식 문서 RAG 인용 + 30문항 Evals로 영업용 AI 어시스턴트 만들기"
 date: 2026-11-17 14:30:00 +0900
+description: "Red Hat 공식 문서 14개를 289청크로 나눠 근거를 인용해 답하는 RAG와, 30문항 골든셋으로 라이브 Claude를 채점한 결과 — 무엇을 증명했고 무엇을 아직 증명하지 못했는지."
 categories: [Project, Red Hat Sales Navigator]
 tags: [RAG, Evals, Claude, Anthropic, RedHat, SolutionArchitect, BM25, Guardrails, Citation, GoldenDataset, B2B, PoC, Architecture, AI]
 ---
