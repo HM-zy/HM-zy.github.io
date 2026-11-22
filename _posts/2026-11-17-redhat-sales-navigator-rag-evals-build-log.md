@@ -7,9 +7,9 @@ tags: [RAG, Evals, Claude, Anthropic, RedHat, BM25, Guardrails, Citation, Golden
 
 ## 먼저 바로잡을 것
 
-오늘 오후에 올린 [Sales Navigator 글](/posts/redhat-sales-navigator-rag-evals/)은 **설계안**이었습니다. 그 글에 적힌 구현(57청크 지식 베이스, 8개 가드레일, Top-1 96.0%)은 당시 실제 코드로 존재하지 않았고, 저장소에는 React 프런트엔드 PoC만 있었습니다.
+오늘 오후에 올린 [Sales Navigator 글](/posts/redhat-sales-navigator-rag-evals/)은 **설계안**이었습니다. 그 글에 적힌 구현(57청크 지식 베이스, 8개 가드레일, Top-1 96.0%)은 당시 실제 코드로 존재하지 않았고, 저장소에는 React 프런트엔드 PoC만 있었습니다. 그 설계 글은 2026-11-22에 실제 구현·측정값으로 본문을 고쳤으니, 지금 그 글에 적힌 수치는 이 글과 같은 실측값입니다.
 
-이 글은 그 설계를 **오늘 실제로 구현하고, 실제 Claude API로 측정한 기록**입니다. 숫자가 그 글보다 낮은 곳도 있습니다. 하지만 이 글의 숫자는 전부 저장소의 결과 파일로 재현할 수 있습니다.
+이 글은 그 설계를 **오늘 실제로 구현하고, 실제 Claude API로 측정한 기록**입니다. 설계안에 적었던 96.0%보다 낮은 곳도 있습니다. 이 글의 숫자는 저장소의 결과 파일과 저장된 raw 답변 재채점으로 재현할 수 있습니다.
 
 > 구현은 Claude Code와 페어 프로그래밍으로 진행했습니다. 설계 결정, 실패 원인 분석, 수치 해석은 아래에 모두 적었습니다.
 {: .prompt-info }
@@ -253,8 +253,10 @@ rag/aliases.py        한국어 영업 용어 → 영문 제품 용어
 rag/retrieval.py      청킹, BM25, 버전·제품 부스트
 rag/guardrails.py     사전 3개 + 사후 3개 가드레일
 rag/pipeline.py       검색 → 차단 → Claude → 인용 검증
-evals/golden.jsonl    30문항
+rag/server.py         웹앱용 HTTP API (/api/ask, /api/health)
+evals/golden.jsonl    32문항 (11-17 라이브 평가 때는 30문항, v3에서 가격 회귀 확인용 2문항 추가)
 evals/run_eval.py     검색 전용 / live eval
-evals/results/        v0, v1, v2 결과 파일
-tests/test_rag.py     단위 테스트 32개
+evals/results/        v0, v1, v2, v3 결과 파일
+tests/test_rag.py     단위 테스트 34개
+tests/test_server.py  API 서버 테스트 15개 (합계 49개)
 ```
