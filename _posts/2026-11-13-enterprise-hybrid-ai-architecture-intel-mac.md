@@ -85,7 +85,7 @@ tags: [HybridAI, OnPremise, SolutionArchitect, EnterpriseRAG, FinOps, LiteLLM, C
                              │  ③ 마스킹된 문맥 + 질의 프롬프트 전송 (TLS 암호화)
                              ▼
   ┌─────────────────────────────────────────────────────────────────────────┐
-  │  ☁️ 퍼블릭 클라우드 프런티어 모델 (Anthropic Claude 3.5 / OpenAI GPT-4o)  │
+  │  ☁️ 퍼블릭 클라우드 프런티어 모델 (Anthropic Claude / OpenAI GPT)         │
   │   - 순수 언어 추론 및 최종 답변 생성 (문서 원본 저장 없음)                  │
   └──────────────────────────┬──────────────────────────────────────────────┘
                              │
@@ -130,8 +130,8 @@ tags: [HybridAI, OnPremise, SolutionArchitect, EnterpriseRAG, FinOps, LiteLLM, C
   │   │    └── 동일/유사 질의 인입 시 ➔ [캐시 즉시 반환] (비용 0원, 지연 10ms)│
   │   │                                                                     │
   │   ├── 🧭 복잡도 기반 지능형 라우팅 엔진 (Smart Router)                   │
-  │   │    ├── 단순 번역·분류 ➔ 경량 고속 모델 분기 (Claude Haiku / 4o-mini) │
-  │   │    └── 복잡 추론·코딩 ➔ 플래그십 모델 분기 (Claude Sonnet / GPT-4o)  │
+  │   │    ├── 단순 번역·분류 ➔ 경량 고속 모델 분기 (Claude Haiku / GPT mini)│
+  │   │    └── 복잡 추론·코딩 ➔ 플래그십 모델 분기 (Claude Opus / GPT)       │
   │   │                                                                     │
   │   └── 📊 Prometheus 메트릭 Exporter (부서별 토큰 사용량 실시간 집계)      │
   └──────────────────────────┬──────────────────────────────────────────────┘
@@ -146,7 +146,7 @@ tags: [HybridAI, OnPremise, SolutionArchitect, EnterpriseRAG, FinOps, LiteLLM, C
 ### 3. 주요 구성 요소 및 워크플로우
 1. **LiteLLM Proxy (API Gateway):** OpenAI 표준 규격을 그대로 모방하는 오픈소스 엔터프라이즈 게이트웨이입니다. 사내 직원들은 소스 코드 수정 없이 `api_base` URL만 인텔 맥북 IP로 지정하면 됩니다.
 2. **시맨틱 캐싱 (Redis):** "우리 회사 재택근무 규정 링크 알려줘"처럼 여러 직원이 반복적으로 묻는 질문은 Redis에 캐시되어, 외부 LLM 호출 없이 0.01초 만에 무료(0원)로 즉시 반환됩니다.
-3. **지능형 비용 라우터:** 입력 프롬프트의 토큰 수와 난이도를 감지하여, 단순 텍스트 교정은 100배 저렴한 Haiku나 GPT-4o-mini로 자동 우회시킵니다.
+3. **지능형 비용 라우터:** 입력 프롬프트의 토큰 수와 난이도를 감지하여, 단순 텍스트 교정은 훨씬 저렴한 Claude Haiku 같은 경량 모델로 자동 우회시킵니다.
 4. **부서별 예산 가드레일:** 개발팀에 월 500달러, 기획팀에 월 200달러 등 가상 키별 한도를 설정해 한 부서의 코드 무한 루프로 인한 요금 폭탄을 원천 차단합니다.
 
 ---
