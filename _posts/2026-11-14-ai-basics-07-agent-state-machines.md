@@ -82,19 +82,3 @@ print(f"현재 상태: {agent_state['step']} -> 다음 실행 노드: {next_step
 ### 4. 에이전트 메모리 (Agent Memory)
 - **일상 비유**: '지금 작업대 위의 메모지(단기 작업 기억)'와 '서재 캐비닛의 장기 보관 서류철(장기 영구 기억)'.
 - **핵심 원리**: 대화 세션 맥락을 유지하는 단기 기억(Session Checkpointer)과, 과거 사용자 선호도·사규를 벡터 DB에 영구 저장하고 재사용하는 장기 기억(Long-term Memory)의 이중화 구조입니다.
-
----
-
-## 🎓 1주일 스터디 완주를 축하합니다! (AI SA 로드맵 요약)
-
-지난 1주일 동안 우리는 AI Solution Architect가 갖추어야 할 핵심 7가지 뼈대를 모두 짚었습니다:
-
-1. **Day 01**: 토큰화와 트랜스포머의 다음 단어 확률 예측 원리
-2. **Day 02**: System / User / Assistant 역할 분리와 가드레일 설계
-3. **Day 03**: Temperature와 Top-P 파라미터 튜닝
-4. **Day 04**: 고차원 임베딩과 벡터 DB의 시맨틱 검색 메커니즘
-5. **Day 05**: 엔터프라이즈 RAG의 청킹 전략과 메타데이터 출처(Citation) 매핑
-6. **Day 06**: Function Calling과 Tool Use 도구 연동 루프
-7. **Day 07**: 상태 머신과 인간 개입(Human-in-the-loop) 에이전트 아키텍처
-
-이 7가지 개념이 바로 우리가 기억해 둔 **'SA 포트폴리오 핵심 3대 프로젝트(Enterprise RAG, 자율 업무 에이전트, API 라우터)'**를 실제로 구현하는 가장 탄탄한 기반이 됩니다!
