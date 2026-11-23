@@ -5,6 +5,8 @@ categories: [기초·개념]
 tags: [Security, RBAC, MultiTenancy, RAG, MetadataFiltering, Architecture, AI기초, AI]
 ---
 
+이런 상황을 떠올려 보세요.
+
 *"신입사원이 챗봇에게 '우리 회사 임원 연봉 얼마야?'라고 물었더니, 이사회 회의록 문서를 읽고 답변해 버렸습니다."*
 
 사내 모든 문서를 하나의 벡터 DB에 털어 넣으면 발생하는 최악의 보안 사고입니다. 검색 품질이 조금 떨어지는 건 다시 물어보면 되지만, 한 번 새어 나간 문서는 되돌릴 수 없습니다.

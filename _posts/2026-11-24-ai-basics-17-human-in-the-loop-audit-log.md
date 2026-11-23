@@ -5,6 +5,8 @@ categories: [기초·개념]
 tags: [HITL, HumanInTheLoop, AuditLog, Approval, Governance, Risk, Agent, Architecture, AI기초, AI]
 ---
 
+이런 상황을 떠올려 보세요.
+
 *"에이전트가 고객에게 환불을 처리했습니다. 금액이 0 하나 더 붙어 있었지만, 승인 버튼은 없었습니다."*
 
 자동화의 가치는 **사람이 안 봐도 되는 일**을 늘리는 데 있고, 신뢰의 가치는 **사람이 꼭 봐야 할 일**을 놓치지 않는 데 있습니다. 이 둘을 동시에 얻는 장치가 **Human-in-the-Loop(HITL)**와 **감사 로그(Audit Log)**입니다.

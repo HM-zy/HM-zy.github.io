@@ -5,6 +5,8 @@ categories: [기초·개념]
 tags: [Observability, Tracing, OpenTelemetry, LLMOps, Metrics, Latency, Cost, Architecture, AI기초, AI]
 ---
 
+이런 상황을 떠올려 보세요.
+
 *"사용자는 '어제는 되던 게 오늘은 답이 이상해요'라고 합니다. 그런데 우리는 그 요청이 어떤 문서를 검색했고, 어떤 모델로 갔고, 얼마를 썼는지 아무것도 모릅니다."*
 
 AI 서비스를 운영하면서 가장 먼저 무너지는 것은 정확도가 아니라 **설명 가능성**입니다. 관측성(Observability)은 "지금 잘 되고 있나"에 답하는 계기판이고, 트레이싱(Tracing)은 "이 요청 하나가 어디서 시간을 썼나"에 답하는 블랙박스입니다.
